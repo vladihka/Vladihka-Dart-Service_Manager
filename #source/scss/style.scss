@@ -1,0 +1,978 @@
+@import "null.scss";
+@import "mixin.scss";
+
+body.lock {
+   overflow: hidden;
+}
+
+.wrapper {
+   display: flex;
+   flex-direction: column;
+   min-height: 100vh;
+}
+
+.header {
+   min-height: 100vh;
+   background: url("../../img/header/header_bg.png") no-repeat center top / cover;
+   &__row {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+   }
+   &__logo {
+      display: flex;
+   }
+   &__burger {
+      order: 4;
+      display: none;
+      z-index: 3;
+      @media (max-width: 767px) {
+         display: block;
+         position: relative;
+         width: 30px;
+         height: 20px;
+      }
+   }
+   &__burger:before,
+   &__burger:after,
+   &__burger span {
+      @media (max-width: 767px) {
+         content: "";
+         background-color: #fff;
+         position: absolute;
+         width: 100%;
+         height: 2px;
+         left: 0;
+         transition: all 0.3s ease 0s;
+      }
+   }
+   &__burger:before {
+      top: 0;
+   }
+   &__burger:after {
+      bottom: 0;
+   }
+   &__burger span {
+      top: 9px;
+   }
+
+   &__menu {
+      @media (max-width: 767px) {
+         position: fixed;
+         top: -100%;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         background-color: rgba($color: #14d8c3, $alpha: 0.9);
+         padding: 80px 0px 20px 20px;
+         transition: all 0.5s ease 0s;
+         overflow: auto;
+      }
+   }
+   &__burger.active:before {
+      @media (max-width: 767px) {
+         transform: rotate(45deg);
+         top: 9px;
+      }
+   }
+   &__burger.active:after {
+      @media (max-width: 767px) {
+         transform: rotate(-45deg);
+         bottom: 9px;
+      }
+   }
+   &__burger.active span {
+      @media (max-width: 767px) {
+         transform: scale(0);
+         transition: all 0.3s ease 0s;
+      }
+   }
+   &__menu.active {
+      top: 0;
+   }
+
+   &__list {
+      display: flex;
+      @media (max-width: 767px) {
+         display: block;
+         z-index: 30;
+      }
+   }
+   &__link a {
+      color: #ffffff;
+      font-family: "Raleway - Semi Bold";
+      font-size: 15px;
+      font-weight: 400;
+      transition: all 0.5s ease 0s;
+      @media (max-width: 767px) {
+         font-size: 30px;
+      }
+   }
+   &__link {
+      @include adaptive_padding_right(50, 15);
+      @media (max-width: 767px) {
+         @include adaptive_padding_bottom(20, 10);
+      }
+   }
+   &__link:last-child {
+      padding: 0px;
+   }
+   &__link a:hover {
+      transition: all 0.5s ease 0s;
+      color: #061e37;
+   }
+
+   &__button {
+   }
+   &__button button {
+      background-color: Transparent;
+      color: #ffffff;
+      font-family: Raleway;
+      @include adaptive_font(12, 10);
+      font-weight: 400;
+      border-radius: 2px;
+      border: 1px solid #ffffff;
+      @include adaptive_padding_top(6, 3);
+      @include adaptive_padding_bottom(6, 3);
+      @include adaptive_padding_left(21, 10.5);
+      @include adaptive_padding_right(21, 10.5);
+      transition: all 0.5s ease 0s;
+   }
+   &__button button:hover {
+      background-color: rgba($color: #fff, $alpha: 0.5);
+      transition: all 0.5s ease 0s;
+   }
+
+   &__inform {
+      max-width: 580px;
+      padding-right: 15px;
+      @media (max-width: 970px) {
+         padding-right: 0px;
+         text-align: center;
+      }
+   }
+
+   &__title {
+      color: #ffffff;
+      font-family: "Raleway - Extra Bold";
+      @include adaptive_font(55, 35);
+      font-weight: bold;
+      text-transform: uppercase;
+   }
+
+   &__text {
+      color: #ffffff;
+      font-family: Raleway;
+      font-size: 18px;
+      font-weight: 400;
+      @include adaptive_line_height(35, 17.5);
+      @include adaptive_padding_top(28, 14);
+      @include adaptive_padding_bottom(38, 19);
+   }
+
+   &__buttons {
+      display: flex;
+      @media (max-width: 970px) {
+         justify-content: center;
+      }
+   }
+   &__button-bottom button {
+      color: #061e37;
+      font-family: Raleway;
+      @include adaptive_font(15, 10);
+      font-weight: 700;
+      text-transform: uppercase;
+      box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
+      border-radius: 5px;
+      background-color: #ffffff;
+      transition: all 0.8s ease 0s;
+      @include adaptive_width(150, 100);
+      @include adaptive_height(55, 35);
+   }
+   &__button-bottom_left {
+      @include adaptive_padding_right(30, 15);
+   }
+   &__button-bottom button:hover {
+      color: #ffffff;
+      background-color: #061e37;
+      transition: all 0.8s ease 0s;
+   }
+
+   &__video {
+      @media (max-width: 970px) {
+         @include adaptive_padding_top(40, 30);
+      }
+   }
+}
+.container {
+   max-width: 1470px;
+   margin: 0px auto;
+   padding: 0px 15px;
+}
+.header-top {
+   display: flex;
+   justify-content: space-between;
+   @include adaptive_padding_top(50, 15);
+   align-items: center;
+}
+.header-bottom {
+   flex: 1 1 auto;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   @media (max-width: 970px) {
+      flex-direction: column;
+      justify-content: center;
+   }
+}
+.video {
+   &__item {
+      width: 600px;
+      @include adaptive_width(600, 450);
+      @media (max-width: 500px) {
+         @include adaptive_width(820, 250);
+      }
+   }
+}
+
+.main-logo {
+   &__icon {
+      @include adaptive_padding_right(10, 5);
+   }
+
+   &__name {
+   }
+   &__name p {
+      color: #ffffff;
+      font-family: "Raleway - Extra Bold";
+      @include adaptive_font(15, 12);
+      font-weight: 400;
+      text-transform: uppercase;
+   }
+   &__name p span {
+      font-weight: 700;
+   }
+}
+
+.easy {
+   &__titl {
+      @include adaptive_padding_top(100, 30);
+      @include adaptive_padding_bottom(100, 30);
+   }
+   &__row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0px 100px;
+      @media (max-width: 767px) {
+         flex-direction: column;
+      }
+   }
+
+   &__item {
+      flex: 0 0 33.333%;
+      margin: 0px -100px;
+      @media (max-width: 767px) {
+         @include adaptive_padding_bottom(20, 15);
+      }
+   }
+
+   &__body {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      @media (max-width: 767px) {
+         max-width: 340px;
+      }
+   }
+
+   &__img {
+   }
+   &__img img {
+      height: 70px;
+   }
+   &__title {
+      color: #061e37;
+      font-family: "Raleway - Semi Bold";
+      font-size: 20px;
+      font-weight: 400;
+      @include adaptive_padding_top(45, 20);
+      @include adaptive_padding_bottom(20, 10);
+   }
+
+   &__text {
+      color: #78909c;
+      font-family: Raleway;
+      font-size: 15px;
+      font-weight: 400;
+   }
+
+   &__button {
+      text-align: center;
+      @include adaptive_padding_top(80, 25);
+      @include adaptive_padding_bottom(100, 30);
+   }
+   &__button button {
+      color: #ffffff;
+      font-family: Raleway;
+      @include adaptive_font(15, 10);
+      font-weight: 700;
+      text-transform: uppercase;
+      box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
+      border-radius: 5px;
+      background-color: #1de9b6;
+      @include adaptive_width(155, 120);
+      @include adaptive_height(55, 35);
+      transition: all 0.8s ease 0s;
+   }
+   &__button button:hover {
+      box-shadow: 0 5px 5px rgba(0, 0, 0, 0.55);
+      transition: all 0.8s ease 0s;
+   }
+}
+.container {
+}
+.title {
+   &__body {
+      max-width: 555px;
+      text-align: center;
+      margin: 0px auto;
+   }
+
+   &__title {
+      color: #061e37;
+      font-family: "Raleway - Semi Bold";
+      @include adaptive_font(45, 25);
+      font-weight: 400;
+   }
+
+   &__subtitle {
+      color: #b0bec5;
+      font-family: "Raleway - Semi Bold";
+      @include adaptive_font(25, 18);
+      font-weight: 400;
+      padding: 14px 0px 0px 0px;
+   }
+
+   &__text {
+      color: #b0bec5;
+      font-family: Raleway;
+      font-size: 15px;
+      font-weight: 400;
+      padding: 20px 0px 0px 0px;
+      @include adaptive_line_height(25, 15);
+   }
+}
+
+.swiper-slide{
+   flex: 0 0 25%;
+   @media (max-width: 767px){
+      flex: 0 0 50%;
+   }
+   @media (max-width: 400px){
+      flex: 0 0 100%;
+   }
+}
+
+.slider {
+   display: flex;
+   @media (max-width: 767px){
+      flex-wrap: wrap;
+   }
+   &__body {
+   }
+
+   &__row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include adaptive_padding_top(45, 30);
+      @include adaptive_padding_bottom(45, 30);
+   }
+
+   &__img {
+      background-color: #ffffff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+   }
+
+   &__text {
+      @include adaptive_padding_left(23, 12);
+      color: #ffffff;
+      font-family: "Raleway - Extra Bold";
+      font-size: 20px;
+      font-weight: 400;
+   }
+}
+.item-slider {
+}
+.swiper-container {
+}
+.swiper-wrapper {
+}
+.swiper-slide {
+}
+.slide {
+   &_1 {
+      background-color: #80d8ff;
+   }
+
+   &_2 {
+      background-color: #82b1ff;
+   }
+
+   &_3 {
+      background-color: #b388ff;
+   }
+
+   &_4 {
+      background-color: #ea80fc;
+   }
+}
+
+.container {
+}
+.title {
+   &__body {
+   }
+
+   &__title {
+   }
+
+   &__text {
+   }
+}
+
+.services {
+   &__titl {
+      @include adaptive_padding_top(100, 30);
+      @include adaptive_padding_bottom(50, 20);
+   }
+   &__item {
+      max-width: 800px;
+      margin: 0px auto;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.13);
+      border-radius: 5px;
+      background-color: #ffffff;
+      margin-bottom: 20px;
+      transition: all 0.5s ease 0s;
+   }
+   &__item.active {
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      transition: all 0.5s ease 0s;
+   }
+   &__block {
+      display: flex;
+      @include adaptive_padding_top(25, 15);
+      @include adaptive_padding_bottom(25, 15);
+      @include adaptive_padding_left(25, 15);
+      @include adaptive_padding_right(25, 15);
+   }
+
+   &__title {
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+      align-items: center;
+   }
+
+   &__icon {
+      @include adaptive_padding_right(25, 15);
+   }
+
+   &__subtitle {
+      color: #061e37;
+      font-family: Raleway;
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+   }
+
+   &__arrow {
+      @include adaptive_padding_right(25, 15);
+   }
+   &__arrow img {
+      transition: all 0.5s ease 0s;
+   }
+   &__arrow.active img {
+      transform: rotate(180deg);
+      transition: all 0.5s ease 0s;
+   }
+   &__content {
+      display: none;
+      @include adaptive_padding_top(25, 15);
+      @include adaptive_padding_bottom(25, 15);
+      @include adaptive_padding_left(25, 15);
+      @include adaptive_padding_right(25, 15);
+   }
+   &__body {
+      display: flex;
+      justify-content: space-between;
+      @media (max-width: 767px) {
+         flex-direction: column;
+         text-align: center;
+      }
+   }
+   &__container {
+      flex-direction: column;
+      width: 100%;
+   }
+
+   &__img {
+      @include adaptive_padding_right(25, 15);
+      @media (max-width: 767px) {
+         padding: 0px;
+      }
+   }
+   &__img img {
+      @media (max-width: 320px) {
+         width: 220px;
+      }
+   }
+
+   &__texts {
+      color: #061e37;
+      font-family: Raleway;
+      font-size: 15px;
+      font-weight: 400;
+      @include adaptive_line_height(25, 15);
+      @media (max-width: 767px) {
+         padding-top: 10px;
+      }
+   }
+   &__texts p:first-child {
+      @include adaptive_padding_bottom(40, 20);
+   }
+}
+
+.what {
+   background: url("../../img/what/what_bg.png") no-repeat top center / cover;
+   &__row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @include adaptive_padding_top(30,15);
+      @include adaptive_padding_bottom(30,15);
+      @media (max-width: 1000px) {
+         flex-direction: column;
+      }
+   }
+
+   &__body {
+      max-width: 500px;
+      @media (max-width: 1000px) {
+         text-align: center;
+      }
+   }
+   &__items{
+      @include adaptive_padding_top(30, 15);
+   }
+   &__title {
+      color: #ffffff;
+      font-family: "Raleway - Semi Bold";
+      @include adaptive_font(45, 30);
+      font-weight: 400;
+   }
+
+   &__text {
+      color: #ffffff;
+      font-family: "Raleway - Semi Bold";
+      @include adaptive_font(15, 12);
+      font-weight: 400;
+      @include adaptive_padding_top(19, 15);
+      @include adaptive_padding_bottom(70, 15);
+   }
+
+   &__button {
+   }
+   &__button button {
+      color: #ffffff;
+      font-family: Raleway;
+      @include adaptive_font(15, 12);
+      font-weight: 700;
+      text-transform: uppercase;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+      border-radius: 5px;
+      background-color: #061e37;
+      @include adaptive_width(150, 120);
+      @include adaptive_height(55, 35);
+      transition: all 0.5s ease 0s;
+   }
+   &__button button:hover {
+      color: silver;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+      transition: all 0.5s ease 0s;
+   }
+
+   &__slider {
+      max-width: 760px;
+      height: 350px;
+      @include adaptive_margin_top(40, 20);
+      @include adaptive_margin_bottom(40, 20);
+   }
+
+   &__slide {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+   }
+
+   &__img {
+      @include adaptive_padding_right(50, 15);
+      @media (max-width: 503px) {
+         display: none;
+      }
+   }
+
+   &__item {
+      @include adaptive_padding_top(30, 15);
+      @include adaptive_padding_bottom(30, 15);
+      @include adaptive_padding_left(30, 15);
+      @include adaptive_padding_right(30, 15);
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+      border-radius: 5px;
+      background-color: #ffffff;
+      @media (max-width: 1000px) {
+         @include adaptive_padding_top(15, 5);
+         @include adaptive_padding_bottom(15, 5);
+         @include adaptive_padding_left(15, 5);
+         @include adaptive_padding_right(15, 5);
+         margin-bottom: 10px;
+      }
+   }
+
+   &__name {
+      color: #061e37;
+      font-family: Raleway;
+      @include adaptive_font(18, 14);
+      font-weight: 700;
+      @include adaptive_padding_bottom(20, 10);
+   }
+
+   &__about {
+      color: #78909c;
+      font-family: Raleway;
+      font-size: 15px;
+      font-weight: 400;
+      font-style: italic;
+      @include adaptive_line_height(25, 15);
+   }
+}
+.what-slider {
+   width: 100%;
+   height: 100%;
+}
+.container {
+}
+.item-slider {
+}
+.swiper-container {
+}
+.swiper-wrapper {
+}
+.swiper-slide {
+}
+
+.what-slider .swiper-button-prev::after,
+.what-slider .swiper-button-next::after {
+   color: #fff;
+   font-size: 80px;
+}
+
+.our {
+   &__titl {
+      @include adaptive_padding_top(100, 30);
+      @include adaptive_padding_bottom(100, 30);
+   }
+
+   &__img {
+      text-align: center;
+   }
+
+   &__item {
+      text-align: center;
+      max-width: 645px;
+      margin: 0px auto;
+   }
+   &__title {
+      color: #061e37;
+      font-family: Raleway;
+      font-size: 18px;
+      font-weight: 700;
+      @include adaptive_padding_top(60, 20);
+      @include adaptive_padding_bottom(20, 10);
+   }
+   &__about {
+      color: #90a4ae;
+      font-family: Raleway;
+      font-size: 15px;
+      font-weight: 400;
+      @include adaptive_line_height(25, 15);
+   }
+
+   &__list {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      @include adaptive_padding_top(30, 10);
+      @include adaptive_padding_bottom(90, 20);
+   }
+   &__list li {
+      @include adaptive_padding_right(30, 15);
+   }
+}
+.container {
+}
+.title {
+   &__body {
+   }
+
+   &__title {
+   }
+
+   &__text {
+   }
+}
+.img-slider {
+}
+.swiper-container {
+}
+.swiper-wrapper {
+}
+.swiper-slide {
+}
+.text-slider {
+}
+
+.contact {
+   &__titl {
+      @include adaptive_padding_top(50, 15);
+      @include adaptive_padding_bottom(50, 15);
+   }
+
+   &__body {
+      max-width: 600px;
+      margin: 0px auto;
+      @media (max-width: 600px) {
+         max-width: 420px;
+      }
+   }
+
+   &__row {
+      display: flex;
+      flex-direction: column;
+   }
+
+   &__inputs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      @media (max-width: 600px) {
+         justify-content: center;
+      }
+   }
+
+   &__input {
+      flex: 0 0 50%;
+      max-width: 280px;
+      @include adaptive_padding_top(20, 10);
+      @media (max-width: 600px) {
+         flex: 0 0 100%;
+      }
+   }
+
+   &__message {
+      @include adaptive_padding_top(20, 10);
+      @media (max-width: 600px) {
+         max-width: 280px;
+         align-self: center;
+      }
+   }
+
+   &__send {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @include adaptive_padding_top(20, 10);
+      @include adaptive_padding_bottom(20, 10);
+   }
+
+   &__button {
+   }
+   &__button button {
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+      border-radius: 5px;
+      background-color: #1de9b6;
+      @include adaptive_height(50, 40);
+      @include adaptive_width(130, 100);
+      color: #ffffff;
+      font-family: Raleway;
+      @include adaptive_font(16, 14);
+      font-weight: 500;
+      text-transform: uppercase;
+   }
+   &__text {
+      color: #061e37;
+      font-family: Raleway;
+      @include adaptive_font(15, 14);
+      font-weight: 500;
+      padding: 0px 0px 0px 9px;
+   }
+}
+.container {
+}
+.title {
+   &__body {
+   }
+
+   &__title {
+   }
+
+   &__text {
+      &_contact {
+         color: #061e37;
+      }
+   }
+}
+.input {
+   &__check {
+      &_a {
+         display: flex;
+         align-items: center;
+      }
+   }
+}
+
+input,
+textarea {
+   border-radius: 5px;
+   border: 1px solid #061e37;
+   color: #061e37;
+   font-family: Raleway;
+   font-size: 14px;
+   font-weight: 500;
+}
+
+input.in,
+textarea.in {
+   @include adaptive_padding_top(20, 10);
+   @include adaptive_padding_left(20, 10);
+   @include adaptive_padding_right(20, 10);
+   @include adaptive_padding_bottom(20, 10);
+   width: 100%;
+}
+
+.footer {
+   background: #061e37;
+   &__row {
+      display: flex;
+      flex-direction: column;
+      @include adaptive_padding_top(90, 25);
+      @include adaptive_padding_bottom(100, 30);
+   }
+
+   &__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @include adaptive_padding_bottom(50, 20);
+      @media (max-width: 650px) {
+         flex-direction: column;
+      }
+   }
+
+   &__logo {
+      display: flex;
+      @media (max-width: 650px) {
+         @include adaptive_padding_bottom(25, 15);
+      }
+   }
+
+   &__inform {
+   }
+
+   &__about {
+      display: flex;
+      @media (max-width: 650px) {
+         @include adaptive_padding_bottom(25, 15);
+      }
+   }
+   &__about li {
+      @include adaptive_padding_right(44, 22);
+   }
+   &__about li:last-child {
+      padding: 0px;
+   }
+   &__about a {
+      opacity: 0.5;
+      color: #ffffff;
+      font-family: Raleway;
+      font-size: 15px;
+      font-weight: 400;
+      transition: all 0.5s ease 0s;
+   }
+   &__about a:hover {
+      opacity: 1;
+      transition: all 0.5s ease 0s;
+   }
+
+   &__bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @media (max-width: 650px) {
+         flex-direction: column;
+      }
+   }
+
+   &__menu {
+   }
+
+   &__list {
+      display: flex;
+   }
+
+   &__link a {
+      color: #ffffff;
+      font-family: "Raleway - Semi Bold";
+      font-size: 15px;
+      font-weight: 400;
+      transition: all 0.5s ease 0s;
+   }
+   &__link a:hover {
+      opacity: 0.5;
+   }
+   &__link {
+      @include adaptive_padding_right(50, 15);
+      @media (max-width: 767px) {
+         @include adaptive_padding_bottom(20, 10);
+      }
+   }
+   &__link:last-child {
+      padding: 0px;
+   }
+   &__links {
+      display: flex;
+      align-items: center;
+   }
+   &__links li {
+      @include adaptive_padding_right(20, 10);
+   }
+   &__links li:last-child {
+      padding: 0px;
+   }
+}
+.container {
+}
+.main-logo {
+   &__icon {
+   }
+
+   &__name {
+   }
+}
