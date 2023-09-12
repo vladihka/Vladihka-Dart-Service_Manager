@@ -91,7 +91,7 @@ body.lock {
 
 .header {
   min-height: 100vh;
-  background: url("../../img/header/header_bg.png") no-repeat center top/cover;
+  background: url("../img/header/header_bg.png") no-repeat center top/cover;
 }
 .header__row {
   min-height: 100vh;
@@ -1142,7 +1142,7 @@ body.lock {
 }
 
 .what {
-  background: url("../../img/what/what_bg.png") no-repeat top center/cover;
+  background: url("../img/what/what_bg.png") no-repeat top center/cover;
 }
 .what__row {
   display: -webkit-box;
